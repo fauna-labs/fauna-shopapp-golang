@@ -1,0 +1,148 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample shop service",
+        "title": "Shop API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/categories": {
+            "get": {
+                "description": "Get details of all categories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Get list of all categories",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/main.Categories"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new categories with the input payload",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Create a new categories",
+                "parameters": [
+                    {
+                        "description": "Create categories",
+                        "name": "categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Categories"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Categories"
+                        }
+                    }
+                }
+            }
+        },
+        "/product": {
+            "post": {
+                "description": "Create a new product with the input payload",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "products"
+                ],
+                "summary": "Create a new product",
+                "parameters": [
+                    {
+                        "description": "Create product",
+                        "name": "product",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Product"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Categories": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.Product": {
+            "type": "object",
+            "properties": {
+                "categoriesRefs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dateTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "sku": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
