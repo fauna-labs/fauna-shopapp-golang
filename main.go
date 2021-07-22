@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"time"
 
 	f "github.com/fauna/faunadb-go/v4/faunadb"
@@ -26,7 +27,7 @@ var dbClient *f.FaunaClient
 // @BasePath /
 
 func main() {
-	secret := "put_your_secret_here"
+	secret := os.Getenv("FAUNA_SECRET_KEY")
 	customHeader := map[string]string{"x-fauna-source": "shopapp-golang"}
 
 	dbClient = f.NewFaunaClient(secret, f.Headers(customHeader))
