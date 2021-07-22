@@ -28,7 +28,7 @@ var dbClient *f.FaunaClient
 
 func main() {
 	secret := os.Getenv("FAUNA_SECRET_KEY")
-	customHeader := map[string]string{"X-Fauna-Source": "shopapp-golang"}
+	customHeader := map[string]string{"X-Fauna-Source": "fauna-shopapp-golang"}
 
 	dbClient = f.NewFaunaClient(secret, f.Headers(customHeader))
 
